@@ -6,8 +6,104 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+* {
+  font-size: 18px;
+  line-height: 20px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Display */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-1 {
+  flex: 1 1;
+}
+.alignCenter {
+  align-items: center;
+}
+.justifyCenter {
+  justify-content: center;
+}
+.justifyBetween {
+  justify-content: space-between;
+}
+.justifyEvenly {
+  justify-content: space-evenly;
+}
+
+/* Colors */
+.whiteBg{
+  background-color: #fff;
+}
+.blueBg {
+  background-color: #7C3AED !important;
+}
+.lightBlueBg {
+  /* background-color: rgb(203 213 225); */
+  background-color: rgb(226 232 240);
+}
+.grayFont {
+  color: rgba(71 85 105);
+}
+.redBg {
+  background-color: rgb(225 29 72);
+}
+.redFont {
+  color: rgb(225 29 72);
+}
+.violetBg {
+  background-color: rgba(237 233 254);
+}
+.whiteFont {
+  color: #fff;
+}
+.stroke-rose-500 {
+  stroke: #f43f5e;
+}
+.fill-rose-500 {
+  fill: #f43f5e !important;
+}
+.fill-none {
+  fill: none !important;
+}
+
+/* Fonts */
+.font28{
+  font-size: 28px;
+  line-height: 30px;
+}
+.font24{
+  font-size: 24px;
+  line-height: 28px;
+}
+
+/* Padding */
+.p-20 {
+  padding: 20px;
+}
+.mb-8{
+  margin-bottom: 8px;
+}
+
+/* Width */
+.w-100{
+  width: 100%;
+}
+.fw-500 {
+  font-weight: 500;
+}
+
+/* Text decoration */
+.upperCase {
+  text-transform: uppercase;
+}
+.lowerCase {
+  text-transform: lowercase;
 }

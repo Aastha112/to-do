@@ -1,0 +1,46 @@
+.task {
+    width: 26%;
+    height: 256px;
+    border-radius: 10px;
+    padding: 16px;
+    background-color: #F1F5F9;
+}
+.blueBg svg{
+    fill: #FFF !important;
+}
+.blueBg .description {
+    color: #AFA9FD !important;
+}
+.description {
+    color: #7B748B;
+}
+.icons div{
+    width: 24px;
+    height: 24px;
+}
+.threeDot{
+    width: 20px;
+    height: 20px;
+}
+.icons svg {
+    width: 100%;
+    height: 100%;
+    fill: #334155;
+}
+.footer {
+    border-top: 2px dashed;
+    padding-top: 16px;
+    margin-top: 16px;
+}
+.status {
+    padding: 4px 12px;
+    border-radius: 9999px;
+}
+.completed {
+    background-color: #A7F3D0;
+    color: #065F46;
+}
+.uncompleted {
+    background-color: #FDE68A;
+    color: #92400E;
+}

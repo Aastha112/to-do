@@ -1,0 +1,16 @@
+.tasks {
+    width: 66%;
+    height: 100vh;
+}
+.taskData {
+    padding: 20px 32px;
+}
+.allTasksParent {
+    padding: 30px;  
+}
+.allTasks {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
