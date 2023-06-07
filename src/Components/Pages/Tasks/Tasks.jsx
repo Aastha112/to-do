@@ -11,15 +11,24 @@ export default function Tasks({state, updateState}) {
         })
         return allTask;
     }
+    function updateTask(id, updates) {
+        const index = tasks.findIndex(t => t.id === id);
+        if(index === -1) {
+            return;
+        }
+        let updated = JSON.parse(JSON.stringify(tasks));
+        updated[index] = {...updated[index], ...updates};
+        updateState({tasks: updated});
+    }
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
     const date = new Date();
     const day = date.getDate();
     const convertedDate = date.getFullYear().toString() + ', ' + months[date.getMonth()] + ((day<=9) ? ' 0' : ' ') + day.toString();
-    
+
     const displayTask = filterTasks().map((task) => {
-        return <Task key={task.id} task={task} />;
+        return <Task key={task.id} task={task} updateTask={updateTask} />;
     })
-    
+
     return <div className="tasks">
         <div className="taskData">
             <div className="taskHeader flex alignCenter justifyBetween">
@@ -41,4 +50,3 @@ export default function Tasks({state, updateState}) {
         </div>
     </div>;
 }
-
