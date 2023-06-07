@@ -1,4 +1,4 @@
-import "./Task.css";
+import "./Task.scss";
 
 export default function Task({task, updateTask}) {
 

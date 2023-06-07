@@ -1,4 +1,4 @@
-import "./TaskStatus.css";
+import "./TaskStatus.scss";
 
 export default function TaskStatus() {
     return <div className="whiteBg taskStatus">

@@ -1,5 +1,5 @@
 import AddTaskBtn from "../../Sharable/AddTaskBtn/AddTaskBtn";
-import "./SelectTasks.css";
+import "./SelectTasks.scss";
 
 export default function SelectTasks({state, updateState}) {
 

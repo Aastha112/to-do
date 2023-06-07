@@ -1,4 +1,4 @@
-import "./Tasks.css";
+import "./Tasks.scss";
 import AddTaskBtn from "../../Sharable/AddTaskBtn/AddTaskBtn";
 import Task from "../../Sharable/Task/Task";
 

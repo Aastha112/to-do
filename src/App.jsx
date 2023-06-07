@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import './App.css';
+import './App.scss';
 import Tasks from './Components/Pages/Tasks/Tasks';
 import SelectTasks from './Components/SideBar/SelectTasks/SelectTasks';
 import TaskStatus from './Components/SideBar/TaskStatus/TaskStatus';
+import 'zone.js';
 
 function App() {
 

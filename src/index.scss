@@ -1,3 +1,5 @@
+@use "sass:math";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -92,13 +94,6 @@ code {
   margin-bottom: 8px;
 }
 
-/* Width */
-.w-100{
-  width: 100%;
-}
-.fw-500 {
-  font-weight: 500;
-}
 
 /* Text decoration */
 .upperCase {
@@ -106,4 +101,50 @@ code {
 }
 .lowerCase {
   text-transform: lowercase;
+}
+$sizes: 100;
+@mixin margin-classes {
+  @for $i from 0 through $sizes {
+    $margin: $i * 1px;
+    /* margin #{$margin} */
+    .m-#{$i}  {margin: $margin;}
+    .ml-#{$i} {margin-left: $margin;}
+    .mr-#{$i} {margin-right: $margin;}
+    .mt-#{$i} {margin-top: $margin;}
+    .mb-#{$i} {margin-bottom: $margin;}
+    .mx-#{$i} {margin-left: $margin; margin-right: $margin;}
+    .my-#{$i} {margin-top: $margin; margin-bottom: $margin;}
+    .p-#{$i} {padding: $margin;}
+    .pl-#{$i} {padding-left: $margin;}
+    .pr-#{$i} {padding-right: $margin;}
+    .pt-#{$i} {padding-top: $margin;}
+    .pb-#{$i} {padding-bottom: $margin;}
+    .px-#{$i} {padding-left: $margin; padding-right: $margin;}
+    .py-#{$i} {padding-top: $margin; padding-bottom: $margin;}
+    .mh-#{$i}  {min-height: $margin;}
+  }
+}
+@include margin-classes;
+
+$width: 5 10 15 20 25 30 33 35 40 45 50 55 60 65 70 75 80 90 100;
+@each $current-width in $width {
+  .w#{$current-width}{
+    width: $current-width*1%;
+  }
+}
+$fontSize: 12 14 16 18 20 22 24 26 28 45;
+@each $size in $fontSize {
+  .font#{$size} {
+    font-size: math.div($size , 16) +rem;
+
+    @media only screen and (max-width: 1080px) {
+      font-size: math.div($size , 18) +rem;
+    }
+  }
+}
+$fontSize: 100 200 300 400 500 600 700 800 900;
+@each $size in $fontSize {
+  .fw-#{$size} {
+    font-weight: $size;
+  }
 }

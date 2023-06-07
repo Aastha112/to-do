@@ -1,4 +1,4 @@
-import "./AddTask.css";
+import "./AddTask.scss";
 
 export default function AddTask() {
     return <div></div>;
