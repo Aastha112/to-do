@@ -1,6 +1,7 @@
 .tasks {
     width: 66%;
     height: 100vh;
+    overflow-y: scroll;
 }
 .taskData {
     padding: 20px 32px;
@@ -12,5 +13,26 @@
     width: 100%;
     flex-wrap: wrap;
     gap: 20px;
-    
+    .directoryName {
+        background-color: rgb(254 205 211);
+        color: rgb(225 29 72);
+        padding: 4px 16px;
+        display: flex;
+        justify-content: flex-end;
+        width: min-content;
+        margin-right: 32px;
+        margin-left: auto;
+        border-radius: 6px 6px 0 0;
+    }
+    .addTaskDiv {
+        width: 26%;
+        height: 224px;
+        padding: 16px;
+        border-radius: 10px;
+        border: 2px dashed rgb(203 213 225);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(148 163 184);
+    }
 }

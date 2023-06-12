@@ -20,13 +20,26 @@ export default function Tasks({state, updateState}) {
         updated[index] = {...updated[index], ...updates};
         updateState({tasks: updated});
     }
+    function deleteTask(id) {
+        const index = tasks.findIndex(t => t.id === id);
+        if(index === -1) {
+            return;
+        }
+        let updated = JSON.parse(JSON.stringify(tasks));
+        updated.splice(index, 1);
+        updateState({tasks: updated});
+    }
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
     const date = new Date();
     const day = date.getDate();
     const convertedDate = date.getFullYear().toString() + ', ' + months[date.getMonth()] + ((day<=9) ? ' 0' : ' ') + day.toString();
 
-    const displayTask = filterTasks().map((task) => {
-        return <Task key={task.id} task={task} updateTask={updateTask} />;
+    const displayTask = filterTasks().map((task, index) => {
+        task.index = index+1;
+        return <div className="w30" key={task.id}>
+            <div className="directoryName"><div>Main</div></div>
+            <Task  task={task} updateTask={updateTask} deleteTask={deleteTask} />
+        </div>;
     })
 
     return <div className="tasks">
@@ -39,13 +52,14 @@ export default function Tasks({state, updateState}) {
                     {convertedDate}
                 </div>
                 <div>
-                    <AddTaskBtn></AddTaskBtn>
+                    <AddTaskBtn state={state} updateState={updateState} ></AddTaskBtn>
                 </div>
             </div>
         </div>
         <div className="allTasksParent">
             <div className="allTasks flex alignCenter">
                 {displayTask}
+                <div onClick={() => updateState({openTask: true})} className="addTaskDiv">Add new task</div>
             </div>
         </div>
     </div>;

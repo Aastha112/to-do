@@ -20,7 +20,7 @@ export default function SelectTasks({state, updateState}) {
     return <div className="selectSidebar whiteBg">
         <div className="todoTitle flex alignCenter justifyCenter upperCase font28">To-do list</div>
         <div className="taskBtn">
-            <AddTaskBtn></AddTaskBtn>
+            <AddTaskBtn state={state} updateState={updateState} ></AddTaskBtn>
         </div>
         <div>{list}</div>
     </div>;

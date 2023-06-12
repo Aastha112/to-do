@@ -1,4 +1,15 @@
 .taskStatus {
     width: 17%;
     height: 100vh;
+    .progressBar {
+        width: 100%;
+        background: rgb(226 232 240);
+        border-radius: 9999px;
+        height: 8px;
+        .completedBar {
+            background: rgb(124 58 237);
+            border-radius: 9999px;
+            height: 100%;
+        }
+    }
 }
