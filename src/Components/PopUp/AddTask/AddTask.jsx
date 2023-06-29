@@ -2,7 +2,7 @@ import "./AddTask.scss";
 import {useState} from "react";
 
 export default function AddTask({state, updateState}) {
-    const {tasks} = state;
+    const {tasks, mode} = state;
     const [isImportant, setIsImportant] = useState(false);
     const [isCompleted, setIsCompleted] = useState(false);
     const addTask = (event) => {
@@ -39,7 +39,7 @@ export default function AddTask({state, updateState}) {
     return <div className='overLay'>
         <div className='addTask p-20'>
             <div className='taskHeader flex alignCenter justifyBetween'>
-                <div className='grayFont font22 fw-500'>Add a task</div>
+                <div className='grayFont font22 fw-500'>{(mode == 'add') ? 'Add a' : 'Edit'} task</div>
                 <div onClick={closeModal} className='closeBtn'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                          stroke="currentColor" className="w-6 h-6">
@@ -81,7 +81,7 @@ export default function AddTask({state, updateState}) {
                         </label>
                     </div>
                     <button type='submit' className="blueBg whiteFont flex alignCenter justifyCenter addTaskBtn">
-                        Add a task
+                        {(mode == 'add') ? 'Add a' : 'Edit'} task
                     </button>
                 </form>
             </div>

@@ -87,7 +87,8 @@ function App() {
         taskList: defaultTasks,
         option: {},
         tasks: allTasks,
-        openTask: false
+        openTask: false,
+        mode: 'add'
     });
     const addTask = state.openTask ? <AddTask state={state} updateState={updateState}/> : <div></div>;
     function updateState(updates) {

@@ -38,7 +38,7 @@ export default function Tasks({state, updateState}) {
         task.index = index+1;
         return <div className="w30" key={task.id}>
             <div className="directoryName"><div>Main</div></div>
-            <Task  task={task} updateTask={updateTask} deleteTask={deleteTask} />
+            <Task  task={task} updateTask={updateTask} updateState={updateState} deleteTask={deleteTask} />
         </div>;
     })
 

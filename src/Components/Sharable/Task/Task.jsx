@@ -1,8 +1,9 @@
 import "./Task.scss";
 
-export default function Task({task, updateTask, deleteTask}) {
+export default function Task({task, updateTask, updateState, deleteTask}) {
 
-    return <div className={`task whiteBg flex justifyBetween flex-col ${task.index===1 ? 'blueBg whiteFont' : ''}`}>
+    return <div onClick={() => updateState({openTask: true, mode:'edit'})}
+     className={`task whiteBg flex justifyBetween flex-col ${task.index===1 ? 'blueBg whiteFont' : ''}`}>
             <div className="flex justifyBetween flex-col flex-1">
                 <div>
                     <div className="title fw-500 mb-8">{task.title ? task.title : `Task ${task.id}`}</div>
