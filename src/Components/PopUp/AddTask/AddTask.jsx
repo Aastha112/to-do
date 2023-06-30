@@ -1,15 +1,16 @@
 import "./AddTask.scss";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export default function AddTask({state, updateState}) {
-    const {tasks, mode} = state;
+    const {tasks, mode, selectedId} = state;
     const [isImportant, setIsImportant] = useState(false);
     const [isCompleted, setIsCompleted] = useState(false);
+    let selectedTask = {};
+    let taskIndex = 0;
     const addTask = (event) => {
         event.preventDefault();
         const data = {};
         document.querySelectorAll('form input').forEach(t => {
-            console.log(t)
             data[t.name] = t.value;
         })
         document.querySelectorAll('form textarea').forEach(t => {
@@ -31,15 +32,53 @@ export default function AddTask({state, updateState}) {
         })
         closeModal();
     }
+    const updateTask = (event) => {
+        event.preventDefault();
+        const data = {};
+        document.querySelectorAll('form input').forEach(t => {
+            data[t.name] = t.value;
+        })
+        document.querySelectorAll('form textarea').forEach(t => {
+            data[t.name] = t.value;
+        })
+        const updatedTask = {
+            id: selectedId,
+            title: data.title,
+            description: data.description,
+            date: data.date,
+            isImportant: isImportant,
+            isCompleted: isCompleted
+        }
+        const newList = structuredClone(tasks);
+        newList[taskIndex] = updatedTask;
+        console.log(newList[taskIndex], taskIndex, selectedId);
+        updateState({
+            tasks: newList
+        })
+        closeModal();
+    }
     function closeModal() {
         updateState({
             openTask: false
         })
     }
+
+    useEffect(() => {
+        if(mode === 'edit') {
+            taskIndex = tasks.findIndex((task) => (task.id === selectedId));
+            selectedTask = tasks[taskIndex];
+            console.log(taskIndex);
+            document.getElementById("title").value = "Task "+selectedTask.id;
+            document.getElementById("description").value = selectedTask.description;
+            setIsImportant(selectedTask.isImportant);
+            setIsCompleted(selectedTask.isCompleted);
+        }
+    }, [selectedId])
+
     return <div className='overLay'>
         <div className='addTask p-20'>
             <div className='taskHeader flex alignCenter justifyBetween'>
-                <div className='grayFont font22 fw-500'>{(mode == 'add') ? 'Add a' : 'Edit'} task</div>
+                <div className='grayFont font22 fw-500'>{(mode === 'add') ? 'Add a' : 'Edit'} task</div>
                 <div onClick={closeModal} className='closeBtn'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                          stroke="currentColor" className="w-6 h-6">
@@ -48,10 +87,10 @@ export default function AddTask({state, updateState}) {
                 </div>
             </div>
             <div className="form">
-                <form onSubmit={addTask} className=''>
+                <form onSubmit={mode === 'add' ? addTask : updateTask} className=''>
                     <div>
                         <div>Title</div>
-                        <input type="text" name='title' placeholder="e.g, study for the test"/>
+                        <input type="text" name='title' id="title" placeholder="e.g, study for the test"/>
                     </div>
                     <div>
                         <div>Date</div>
@@ -59,7 +98,7 @@ export default function AddTask({state, updateState}) {
                     </div>
                     <div>
                         <div>Description (optional)</div>
-                        <textarea name="description" cols="30" rows="10"></textarea>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
                     </div>
                     <div>
                         <div>Select a directory</div>
@@ -81,7 +120,7 @@ export default function AddTask({state, updateState}) {
                         </label>
                     </div>
                     <button type='submit' className="blueBg whiteFont flex alignCenter justifyCenter addTaskBtn">
-                        {(mode == 'add') ? 'Add a' : 'Edit'} task
+                        {(mode === 'add') ? 'Add a' : 'Edit'} task
                     </button>
                 </form>
             </div>

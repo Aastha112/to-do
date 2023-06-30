@@ -35,7 +35,7 @@ export default function Tasks({state, updateState}) {
     const convertedDate = date.getFullYear().toString() + ', ' + months[date.getMonth()] + ((day<=9) ? ' 0' : ' ') + day.toString();
 
     const displayTask = filterTasks().map((task, index) => {
-        task.index = index+1;
+        task.index = index;
         return <div className="w30" key={task.id}>
             <div className="directoryName"><div>Main</div></div>
             <Task  task={task} updateTask={updateTask} updateState={updateState} deleteTask={deleteTask} />
