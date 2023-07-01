@@ -59,7 +59,8 @@ export default function Tasks({state, updateState}) {
         <div className="allTasksParent">
             <div className="allTasks flex alignCenter">
                 {displayTask}
-                <div onClick={() => updateState({openTask: true})} className="addTaskDiv">Add new task</div>
+                <div onClick={() => updateState({openTask: true})} 
+                className="addTaskDiv cursor-pointer">Add new task</div>
             </div>
         </div>
     </div>;

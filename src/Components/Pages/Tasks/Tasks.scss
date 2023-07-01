@@ -34,5 +34,9 @@
         align-items: center;
         justify-content: center;
         color: rgb(148 163 184);
+        &:hover {
+            color: rgb(100 116 139);
+            background-color: rgb(203 213 225);
+        }
     }
 }

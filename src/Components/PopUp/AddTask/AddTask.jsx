@@ -26,7 +26,6 @@ export default function AddTask({state, updateState}) {
         }
         const newList = tasks;
         newList.push(newTask);
-        console.log(newList);
         updateState({
             tasks: newList
         })
@@ -50,8 +49,8 @@ export default function AddTask({state, updateState}) {
             isCompleted: isCompleted
         }
         const newList = structuredClone(tasks);
+        taskIndex = tasks.findIndex((task) => (task.id === selectedId));
         newList[taskIndex] = updatedTask;
-        console.log(newList[taskIndex], taskIndex, selectedId);
         updateState({
             tasks: newList
         })
@@ -67,7 +66,6 @@ export default function AddTask({state, updateState}) {
         if(mode === 'edit') {
             taskIndex = tasks.findIndex((task) => (task.id === selectedId));
             selectedTask = tasks[taskIndex];
-            console.log(taskIndex);
             document.getElementById("title").value = "Task "+selectedTask.id;
             document.getElementById("description").value = selectedTask.description;
             setIsImportant(selectedTask.isImportant);

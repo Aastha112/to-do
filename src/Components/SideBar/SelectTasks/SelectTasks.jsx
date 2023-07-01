@@ -5,7 +5,7 @@ export default function SelectTasks({state, updateState}) {
 
     const {taskList} = state;
     const list = taskList.map((task) => {
-        return <div className={`taskTitle ${task.isSelected ? 'selected' : ''}`}
+        return <div className={`taskTitle cursor-pointer ${task.isSelected ? 'selected' : ''}`}
              onClick={() => selectTask(task)}
              key={task.id}>{task.title}</div>
     })
